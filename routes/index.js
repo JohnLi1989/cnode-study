@@ -10,6 +10,6 @@ router.get('/signin',signController.showSignin);
 
 router.post('/signin',signController.signin);
 
-router.post('/signout',signController.signout);
+router.get('/signout',signController.signout);
 
 module.exports = router;

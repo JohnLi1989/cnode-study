@@ -2,7 +2,7 @@
  * Created by john on 16/4/11.
  */
 var eventproxy = require('eventproxy');
-var UserModel = {};
+var UserModel = require('../models/user');
 exports.showSignup = function(req,res){
     res.render('signup');
 }
@@ -15,7 +15,7 @@ exports.signup = function(req,res){
     var ep = new eventproxy();
     ep.on('error_info',function(msg){
         res.status(422);
-        res.render('/signup',{error:msg});
+        res.render('signup',{error:msg});
     });
     //check info
     var hasEmptyInfo = [username,pass,re_pass,email].some(function(item){
@@ -38,7 +38,7 @@ exports.signup = function(req,res){
         }
         UserModel.addUser({username:username,pass:pass,email:email},function(err,result){
             if(result){
-                res.render('/signin');
+                res.redirect('/signin');
             }else{
                 ep.emit('error_info','注册失败');
             }
@@ -56,18 +56,19 @@ exports.signin = function(req,res){
     if(!username || !pass){
         res.status(422);
         //ep.emit('error_info','用户名密码不能为空');
-        return res.render('/signin',{error:'用户名和密码不能为空'});
+        return res.render('signin',{error:'用户名和密码不能为空'});
     }
     UserModel.getUser(username,pass,function(err,user){
        if(user){
            req.session.user = user;
-           res.render('/');
+           res.redirect('/');
        }else{
            res.status(422);
-           res.render('/signin',{error:'用户名或密码错误'});
+           res.render('signin',{error:'用户名或密码错误'});
        }
     });
 }
 exports.signout = function(req,res){
-
+    req.session.destroy();
+    res.redirect('/');
 }
