@@ -44,6 +44,12 @@
                 </ol>
             </div>
             <div class="inner post">
+                <% if(typeof(error) !== 'undefined' && error){ %>
+                <div class="alert alert-error">
+                    <a class="close" data-dismiss="alert" href="#">&times;</a>
+                    <strong><%= error %></strong>
+                </div>
+                <% } %>
                 <form id="create_topic_form" action="/topic/create" method="post">
 
                     <fieldset>

@@ -4,6 +4,6 @@ var auth = require('../middlewares/auth');
 var topic = require('../controllers/topic');
 
 router.get('/create',auth.requireLogin,topic.showCreate);
-router.post('/create',auth.requireLogin);
+router.post('/create',auth.requireLogin,topic.create);
 
 module.exports = router;
