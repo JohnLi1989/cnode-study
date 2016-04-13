@@ -17,6 +17,9 @@ UserSchema.statics = {
     },
     getUser : function(username,pass,cb){
         this.findOne({username:username,pass:pass},cb);
+    },
+    getUserInfo:function (username,cb) {
+        this.findOne({username:username},cb);
     }
 }
 

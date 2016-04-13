@@ -208,14 +208,14 @@
       <div class="inner no-padding">
         <div id="topic_list">
 
-
+          <% topics.forEach(function(topic){  %>
           <div class="cell">
 
             <a class="user_avatar pull-left" href="/user/i5ting">
               <img src="https://avatars.githubusercontent.com/u/3118295?v=3&amp;s=120" title="i5ting">
             </a>
 
-            <span class="reply_count pull-left">
+            <!--<span class="reply_count pull-left">
               <span class="count_of_replies" title="回复数">
                 78
               </span>
@@ -223,7 +223,7 @@
               <span class="count_of_visits" title="点击数">
                 12206
               </span>
-            </span>
+            </span>-->
 
             <a class="last_time pull-right" href="/topic/56ef3edd532839c33a99d00e#570dffb87a3d999758a3b00d">
               <img class="user_small_avatar" src="https://avatars.githubusercontent.com/u/12516428?v=3&amp;s=120">
@@ -234,12 +234,12 @@
 
               <span class="put_top">置顶</span>
 
-              <a class="topic_title" href="/topic/56ef3edd532839c33a99d00e" title="前端资源教程">
-                前端资源教程
+              <a class="topic_title" href="/topic/<%= topic._id %>" title="<%= topic.title%>">
+                <%= topic.title %>
               </a>
             </div>
           </div>
-
+          <% }) %>
 
 
         </div>

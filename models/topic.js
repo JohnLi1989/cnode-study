@@ -10,9 +10,19 @@ var TopicSchema = new mongoose.Schema({
     insertTime:Date
 });
 
-TopicSchema.statics.addTopic = function(topicData,cb){
-    this.create(topicData,cb);
+TopicSchema.statics = {
+    addTopic :function(topicData,cb){
+        this.create(topicData,cb);
+    },
+    getTopics : function(query,option,cb){
+        this.find([query,option],cb);
+    },
+    pageCount : function(query,cb){
+        this.count(query,cb);
+    }
 }
+
+
 
 var TopicModel = mongoose.model('Topic',TopicSchema);
 module.exports = TopicModel;
