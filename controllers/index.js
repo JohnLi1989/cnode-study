@@ -17,7 +17,7 @@ exports.index = function(req,res){
 
     var ep = new eventproxy();
     ep.all('index_success','page_success','user_success',function(topics,pageCount,userInfo){
-        res.render('index',{topics:topics,page:page,pageCount:pageCount,userInfo:userInfo});
+        res.render('index',{topics:topics,page:page,pageCount:pageCount,tab:tab,userInfo:userInfo});
     });
 
     TopicModel.getTopics(query,option,function(err,topics){
@@ -28,8 +28,9 @@ exports.index = function(req,res){
        var pageCount = Math.ceil(allCount/count);
         ep.emit('page_success',pageCount);
     });
-    var username = req.session.user.username;
+    var username = req.session.user ? req.session.user.username : '';
     UserModel.getUserInfo(username,function(err,userInfo){
+        console.log(userInfo)
        ep.emit('user_success',userInfo);
     });
 }
