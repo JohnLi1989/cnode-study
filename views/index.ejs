@@ -1,11 +1,282 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-  </body>
-</html>
+<% include header %>
+<div id="main">
+  <div id="sidebar">
+
+    <div class="panel">
+
+      <div class="header">
+        <span class="col_fade">个人信息</span>
+      </div>
+      <div class="inner">
+        <div class="user_card">
+          <div>
+            <a class="user_avatar" href="/user/JohnLi1989">
+              <img src="https://avatars.githubusercontent.com/u/11645797?v=3&amp;s=120" title="JohnLi1989">
+            </a>
+            <span class="user_name"><a class="dark" href="/user/JohnLi1989">JohnLi1989</a></span>
+
+            <div class="board clearfix">
+              <div class="floor">
+                <span class="big">积分: 5 </span>
+              </div>
+            </div>
+            <div class="space clearfix"></div>
+    <span class="signature">
+        “
+
+            这家伙很懒，什么个性签名都没有留下。
+
+        ”
+    </span>
+          </div>
+        </div>
+
+
+        <script>
+          $(document).ready(function () {
+            $('.follow_btn').click(function () {
+              var $me = $(this);
+              var action = $me.attr('action');
+              var params = {
+                follow_id: '56f4ba0f75c1c361451a85ac',
+                _csrf: 'FrLeZF0i-lwWJdMKkAiEjvCQx5W2lHQfkxpQ'
+              };
+              $.post('/user/' + action, params, function (data) {
+                if (data.status === 'success') {
+                  var $btns = $('.follow_btn');
+                  if (action === 'follow') {
+                    $btns.html('取消关注');
+                    $btns.attr('action', 'un_follow');
+                  } else {
+                    $btns.html('加入关注');
+                    $btns.attr('action', 'follow');
+                  }
+                  $btns.toggleClass('btn-success');
+                }
+              }, 'json');
+            });
+          });
+        </script>
+
+
+      </div>
+
+    </div>
+
+
+    <div class="panel">
+      <div class="inner">
+        <a href="/topic/create" id="create_topic_btn">
+          <span class="span-success">发布话题</span>
+        </a>
+      </div>
+    </div>
+
+
+
+
+    <div class="panel">
+      <div class="inner ads">
+
+
+
+        <a href="https://www.wilddog.com/?utm_source=cnodejs.org&amp;utm_medium=banner&amp;utm_campaign=orangemarch" target="_blank" class="banner sponsor_outlink" data-label="wilddog">
+          <img src="//cdn.wilddog.com/images/ads/cnode/cnode-540x130-1.jpg">
+        </a>
+
+
+        <div class="sep10"></div>
+
+        <a href="http://alinode.aliyun.com/" target="_blank" class="banner sponsor_outlink" data-label="alinode">
+          <img src="//dn-cnode.qbox.me/Fn4D6BhOTz1IswvmzeZ1q7QW1ls_">
+        </a>
+
+
+        <div class="sep10"></div>
+
+        <a href="https://www.jpush.cn/?from=cnode01" target="_blank" class="banner sponsor_outlink" data-label="jpush">
+          <img src="//dn-cnode.qbox.me/FuYV5_y5_a2zUS7evoOiDsihbk9z">
+        </a>
+
+
+        <div class="sep10"></div>
+
+        <a href="https://cnodejs.org/topic/55a77e2f93ce02cd25985916" target="_blank" class="banner sponsor_outlink" data-label="guangyin">
+          <img src="//dn-cnode.qbox.me/FphIGf6l1QKaEzhnlLHvw49GIv_P">
+        </a>
+
+      </div>
+    </div>
+
+
+
+
+    <div class="panel">
+      <div class="header">
+        <span class="col_fade">无人回复的话题</span>
+      </div>
+      <div class="inner">
+
+        <ul class="unstyled">
+          <li>
+            <div><a class="dark topic_title" href="/topic/570e49f8938530066c50f7e2" title="socket通信响应方面的问题">socket通信响应方面的问题</a>
+            </div>
+          </li>
+          <li>
+            <div><a class="dark topic_title" href="/topic/570e3e49742722d76b8228c0" title="用 Nokitjs 解决前端开发中的跨域问题">用 Nokitjs 解决前端开发中的跨域问题</a>
+            </div>
+          </li>
+          <li>
+            <div><a class="dark topic_title" href="/topic/570deda6c0acaa3059689534" title="webpack-dev-server 启动的项目，在 docker 中找不到服务">webpack-dev-server 启动的项目，在 docker 中找不到服务</a>
+            </div>
+          </li>
+          <li>
+            <div><a class="dark topic_title" href="/topic/570dceb77a3d999758a3aff2" title="nodejs图片合成处理，有那些好用的库呢？">nodejs图片合成处理，有那些好用的库呢？</a>
+            </div>
+          </li>
+          <li>
+            <div><a class="dark topic_title" href="/topic/570db11ab95873382cb8463e" title="安装编译文件时，参数 --build-from-source 问题">安装编译文件时，参数 --build-from-source 问题</a>
+            </div>
+          </li>
+
+        </ul>
+
+      </div>
+    </div>
+
+
+
+
+
+
+    <div class="panel">
+      <div class="header">
+        <span class="col_fade">友情社区</span>
+      </div>
+      <div class="inner">
+        <ol class="friendship-community">
+          <li>
+            <a href="https://ruby-china.org/" target="_blank">
+              <img src="//o4j806krb.qnssl.com/public/images/ruby-china-20150529.png">
+            </a>
+          </li>
+          <div class="sep10"></div>
+          <li>
+            <a href="http://golangtc.com/" target="_blank">
+              <img src="//o4j806krb.qnssl.com/public/images/golangtc-logo.png">
+            </a>
+          </li>
+          <div class="sep10"></div>
+          <li>
+            <a href="http://phphub.org/" target="_blank">
+              <img src="//o4j806krb.qnssl.com/public/images/phphub-logo.png">
+            </a>
+          </li>
+        </ol>
+      </div>
+    </div>
+    <div class="panel">
+      <div class="header">
+        <span class="col_fade">客户端二维码</span>
+      </div>
+      <div class="inner cnode-app-download">
+        <img width="200" src="//dn-cnode.qbox.me/FtG0YVgQ6iginiLpf9W4_ShjiLfU">
+        <br>
+        <a href="https://itunes.apple.com/cn/app/id954734793" target="_blank">iOS</a>/<a href="http://fir.im/ks4u" target="_blank">Android</a>
+      </div>
+    </div>
+
+  </div>
+
+
+  <div id="content">
+    <div class="panel">
+      <div class="header">
+
+        <a href="/?tab=all" class="topic-tab current-tab">全部</a>
+
+        <a href="/?tab=good" class="topic-tab ">精华</a>
+
+        <a href="/?tab=share" class="topic-tab ">分享</a>
+
+        <a href="/?tab=ask" class="topic-tab ">问答</a>
+
+        <a href="/?tab=job" class="topic-tab ">招聘</a>
+
+      </div>
+
+      <div class="inner no-padding">
+        <div id="topic_list">
+
+
+          <div class="cell">
+
+            <a class="user_avatar pull-left" href="/user/i5ting">
+              <img src="https://avatars.githubusercontent.com/u/3118295?v=3&amp;s=120" title="i5ting">
+            </a>
+
+            <span class="reply_count pull-left">
+              <span class="count_of_replies" title="回复数">
+                78
+              </span>
+              <span class="count_seperator">/</span>
+              <span class="count_of_visits" title="点击数">
+                12206
+              </span>
+            </span>
+
+            <a class="last_time pull-right" href="/topic/56ef3edd532839c33a99d00e#570dffb87a3d999758a3b00d">
+              <img class="user_small_avatar" src="https://avatars.githubusercontent.com/u/12516428?v=3&amp;s=120">
+              <span class="last_active_time">5 小时前</span>
+            </a>
+
+            <div class="topic_title_wrapper">
+
+              <span class="put_top">置顶</span>
+
+              <a class="topic_title" href="/topic/56ef3edd532839c33a99d00e" title="前端资源教程">
+                前端资源教程
+              </a>
+            </div>
+          </div>
+
+
+
+        </div>
+        <div class="pagination" current_page="1">
+          <ul>
+            <li class="disabled"><a>«</a></li>
+            <li class="disabled active"><a>1</a></li>
+            <li><a href="/?tab=all&amp;page=2">2</a></li>
+            <li><a href="/?tab=all&amp;page=3">3</a></li>
+            <li><a href="/?tab=all&amp;page=4">4</a></li>
+            <li><a href="/?tab=all&amp;page=5">5</a></li>
+            <li><a>...</a></li>
+            <li><a href="/?tab=all&amp;page=415">»</a></li>
+          </ul>
+        </div>
+        <script>
+          $(document).ready(function () {
+            var $nav = $('.pagination');
+            var current_page = $nav.attr('current_page');
+            if (current_page) {
+              $nav.find('li').each(function () {
+                var $li = $(this);
+                var $a = $li.find('a');
+                if ($a.html() == current_page) {
+                  $li.addClass('active');
+                  $a.removeAttr('href');
+                }
+              });
+            }
+          });
+        </script>
+
+      </div>
+
+    </div>
+  </div>
+
+</div>
+<div id="backtotop" style="top: 360px; right: 0px;">回到顶部</div>
+<% include footer %>

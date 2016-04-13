@@ -4,7 +4,7 @@
 var mongoose = require('mongoose');
 var TopicSchema = new mongoose.Schema({
    title:String,
-    tap:String,
+    tab:String,
     content:String,
     username:String,
     insertTime:Date

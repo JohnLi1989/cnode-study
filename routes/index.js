@@ -1,7 +1,10 @@
 var express = require('express');
 var router = express.Router();
-var signController = require('../controllers/sign')
+var signController = require('../controllers/sign');
+var indexController = require('../controllers/index');
 /* GET home page. */
+router.get('/',indexController.index);
+
 router.get('/signup',signController.showSignup);
 
 router.post('/signup',signController.signup);
