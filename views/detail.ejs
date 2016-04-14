@@ -121,6 +121,8 @@
             <div class="header">
                 <span class="col_fade">3 回复</span>
             </div>
+
+            <% replys.forEach(function(reply){ %>
             <div class="cell reply_area reply_item
   " id="reply1" reply_id="570f319f510629637266683c" reply_to_id="">
                 <a class="anchor" id="570f319f510629637266683c"></a>
@@ -130,9 +132,9 @@
                         <img src="https://avatars.githubusercontent.com/u/3832082?v=3&amp;s=120" title="yjhjstz"></a>
 
                     <div class="user_info">
-                        <a class="dark reply_author" href="/user/yjhjstz">yjhjstz
+                        <a class="dark reply_author" href="/user/yjhjstz"><%= reply.username %>
                         </a>
-                        <a class="reply_time" href="#570f319f510629637266683c">1楼•9 小时前</a>
+                        <a class="reply_time" href="#570f319f510629637266683c">1楼•<%= reply.insertTime %></a>
                     </div>
                     <div class="user_action">
       <span>
@@ -150,32 +152,12 @@
                     </div>
                 </div>
                 <div class="reply_content from-yjhjstz">
-                    <div class="markdown-text"><p>无 node.js 的要求啊</p>
+                    <div class="markdown-text"><p><%- md.render(reply.content) %></p>
                     </div>
                 </div>
-                <div class="clearfix">
-                    <div class="reply2_area">
 
-                        <form class="reply2_form" action="/570f1fe9510629637266682f/reply" method="post">
-                            <input type="hidden" name="_csrf" value="8HwKZmVa-rv2iJ3jzPlVLs2_uW6yjBp8Kg8M">
-                            <input type="hidden" name="reply_id" value="570f319f510629637266683c">
-
-                            <div class="markdown_editor in_editor">
-                                <div class="markdown_in_editor">
-                                    <textarea class="span8 editor reply_editor" id="reply2_editor_570f319f510629637266683c" name="r_content" rows="4" style="display: none;"></textarea><div class="editor-toolbar"><a class="eicon-bold"></a><a class="eicon-italic"></a><i class="separator">|</i><a class="eicon-quote"></a><a class="eicon-unordered-list"></a><a class="eicon-ordered-list"></a><i class="separator">|</i><a class="eicon-link"></a><a class="eicon-image"></a><i class="separator">|</i><a class="eicon-info" href="http://lab.lepture.com/editor/markdown" target="_blank"></a><a class="eicon-preview"></a><a class="eicon-fullscreen"></a></div><div class="CodeMirror cm-s-paper"><div style="overflow: hidden; position: relative; width: 3px; height: 0px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; padding: 0px; width: 1000px; height: 1em; outline: none; font-size: 4px;"></textarea></div><div class="CodeMirror-hscrollbar"><div style="height: 1px;"></div></div><div class="CodeMirror-vscrollbar"><div style="width: 1px;"></div></div><div class="CodeMirror-scrollbar-filler"></div><div class="CodeMirror-gutter-filler"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="min-width: 33px;"><div style="position: relative;"><div class="CodeMirror-lines"><div style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre>&nbsp;<span>&#8203;</span></pre></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code"></div><div class="CodeMirror-cursor">&nbsp;</div><div class="CodeMirror-cursor CodeMirror-secondarycursor">&nbsp;</div></div></div></div></div><div style="position: absolute; height: 30px; width: 1px;"></div><div class="CodeMirror-gutters" style="display: none;"></div></div></div>
-
-                                    <div class="editor_buttons">
-                                        <input class="span-primary reply2_submit_btn submit_btn" type="submit" data-id="570f319f510629637266683c" data-loading-text="回复中.." value="回复">
-                                    </div>
-                                </div>
-
-                            </div>
-
-                        </form>
-
-                    </div>
-                </div>
             </div>
+            <% }) %>
         </div>
 
 
@@ -184,12 +166,11 @@
                 <span class="col_fade">添加回复</span>
             </div>
             <div class="inner reply">
-                <form id="reply_form" action="/570f1fe9510629637266682f/reply" method="post">
-
+                <form id="reply_form" action="/topic/reply" method="post">
+                    <input type="hidden" name="tid" value="<%= topic._id %>">
                     <div class="markdown_editor in_editor">
                         <div class="markdown_in_editor">
-                            <textarea class="editor" name="r_content" rows="8" style="display: none;"></textarea><div class="editor-toolbar"><a class="eicon-bold"></a><a class="eicon-italic"></a><i class="separator">|</i><a class="eicon-quote"></a><a class="eicon-unordered-list"></a><a class="eicon-ordered-list"></a><i class="separator">|</i><a class="eicon-link"></a><a class="eicon-image"></a><i class="separator">|</i><a class="eicon-info" href="http://lab.lepture.com/editor/markdown" target="_blank"></a><a class="eicon-preview"></a><a class="eicon-fullscreen"></a></div><div class="CodeMirror cm-s-paper"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 10px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; padding: 0px; width: 1000px; height: 1em; outline: none; font-size: 4px;"></textarea></div><div class="CodeMirror-hscrollbar" style="left: 0px; min-height: 18px;"><div style="height: 1px;"></div></div><div class="CodeMirror-vscrollbar" style="min-width: 18px;"><div style="width: 1px;"></div></div><div class="CodeMirror-scrollbar-filler"></div><div class="CodeMirror-gutter-filler"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="min-width: 40.8906px; margin-left: 0px; min-height: 36px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines"><div style="position: relative; outline: none;"><div class="CodeMirror-measure"><div style="width: 50px; height: 50px; overflow-x: scroll;"></div></div><div style="position: relative; z-index: 1; display: none;"></div><div class="CodeMirror-code"><pre>&nbsp;</pre></div><div class="CodeMirror-cursor" style="left: 4px; top: 6px; height: 16px;">&nbsp;</div><div class="CodeMirror-cursor CodeMirror-secondarycursor" style="display: none;">&nbsp;</div></div></div></div></div><div style="position: absolute; height: 30px; width: 1px; top: 36px;"></div><div class="CodeMirror-gutters" style="display: none; height: 160px;"></div></div></div>
-
+                            <textarea class="editor" name="r_content" rows="8"></textarea>
                             <div class="editor_buttons">
                                 <input class="span-primary submit_btn" type="submit" data-loading-text="回复中.." value="回复">
                             </div>
@@ -219,17 +200,22 @@
 
 
     <!-- markdown editor -->
-    <script src="//o4j806krb.qnssl.com/public/editor.min.ce5fc9c6.min.js"></script>
+    <link rel="stylesheet" href="/stylesheets/webuploader.css"/>
+    <link rel="stylesheet" href="/stylesheets/editor.css"/>
+    <script src="/javascripts/markdownit.js"></script>
+    <script src="/javascripts/webuploader.withoutimage.js"></script>
+    <script src="/javascripts/editor.js"></script>
+    <script src="/javascripts/ext.js"></script>
 
 
     <script>
         $(document).ready(function () {
             // 获取所有回复者name
-            var allNames = $('.reply_author').map(function (idx, ele) {
+            /*var allNames = $('.reply_author').map(function (idx, ele) {
                 return $(ele).text().trim();
             }).toArray();
             allNames.push($('.user_card .user_name').text())
-            allNames = _.uniq(allNames);
+            allNames = _.uniq(allNames);*/
             // END 获取所有回复者name
 
             // 编辑器相关
@@ -250,9 +236,9 @@
                         $el.closest('form').submit();
                     }
                 });
-
+            });
                 // at.js 配置
-                var codeMirrorGoLineUp = CodeMirror.commands.goLineUp;
+                /*var codeMirrorGoLineUp = CodeMirror.commands.goLineUp;
                 var codeMirrorGoLineDown = CodeMirror.commands.goLineDown;
                 var codeMirrorNewlineAndIndent = CodeMirror.commands.newlineAndIndent;
                 $input.atwho({
@@ -271,7 +257,7 @@
                         });
                 // END at.js 配置
 
-            });
+
             // END 编辑器相关
 
             // 评论回复
@@ -391,7 +377,7 @@
                         }
                     });
             // END 用户 hover 在回复框时才显示点赞按钮
-
+             */
 
         });
 

@@ -23,6 +23,7 @@ TopicSchema.statics = {
     getTopic:function(tid,cb){
         this.findOne({_id:tid},cb);
     }
+
 }
 
 
