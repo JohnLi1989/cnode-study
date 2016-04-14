@@ -198,7 +198,7 @@
           <div class="cell">
 
             <a class="user_avatar pull-left" href="/user/i5ting">
-              <img src="https://avatars.githubusercontent.com/u/3118295?v=3&amp;s=120" title="i5ting">
+              <span class="put_top"><%= topic.username %></span>
             </a>
 
             <!--<span class="reply_count pull-left">
@@ -212,13 +212,11 @@
             </span>-->
 
             <a class="last_time pull-right" href="/topic/56ef3edd532839c33a99d00e#570dffb87a3d999758a3b00d">
-              <img class="user_small_avatar" src="https://avatars.githubusercontent.com/u/12516428?v=3&amp;s=120">
+
               <span class="last_active_time"><%= topic.timeStr %></span>
             </a>
 
             <div class="topic_title_wrapper">
-
-              <span class="put_top"><%= topic.tab %></span>
 
               <a class="topic_title" href="/topic/<%= topic._id %>" title="<%= topic.title%>">
                 <%= topic.title %>
