@@ -4,6 +4,7 @@
 var TopicModel = require('../models/topic');
 var UserModel = require('../models/user');
 var eventproxy = require('eventproxy');
+var _ = require('lodash');
 exports.index = function(req,res){
     var page = parseInt(req.query.page) || 1;
     page = page > 0 ? page : 1 ;
@@ -21,7 +22,10 @@ exports.index = function(req,res){
     });
 
     TopicModel.getTopics(query,option,function(err,topics){
-        console.log(topics)
+       topics =  _.map(topics,function(topic){
+            topic.timeStr = topic.insertTime.toLocaleDateString()+' '+topic.insertTime.toTimeString().replace(/\sGm.*$/,'');
+            return topic;
+        });
        ep.emit('index_success',topics);
     });
     TopicModel.pageCount(query,function(err,allCount){
@@ -30,7 +34,6 @@ exports.index = function(req,res){
     });
     var username = req.session.user ? req.session.user.username : '';
     UserModel.getUserInfo(username,function(err,userInfo){
-        console.log(userInfo)
        ep.emit('user_success',userInfo);
     });
 }

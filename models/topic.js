@@ -15,7 +15,7 @@ TopicSchema.statics = {
         this.create(topicData,cb);
     },
     getTopics : function(query,option,cb){
-        this.find([query,option],cb);
+        this.find(query,{},option,cb);
     },
     pageCount : function(query,cb){
         this.count(query,cb);
