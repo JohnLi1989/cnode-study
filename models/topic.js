@@ -19,6 +19,9 @@ TopicSchema.statics = {
     },
     pageCount : function(query,cb){
         this.count(query,cb);
+    },
+    getTopic:function(tid,cb){
+        this.findOne({_id:tid},cb);
     }
 }
 

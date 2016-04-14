@@ -5,5 +5,6 @@ var topic = require('../controllers/topic');
 
 router.get('/create',auth.requireLogin,topic.showCreate);
 router.post('/create',auth.requireLogin,topic.create);
+router.get('/:_id',topic.detail);
 
 module.exports = router;

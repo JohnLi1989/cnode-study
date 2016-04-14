@@ -8,6 +8,8 @@ var session = require('express-session');
 var RedisStore = require('connect-redis')(session);
 var mongoose = require('mongoose');
 
+var MarkdownIt = require('markdown-it');
+var md = new MarkdownIt();
 var routes = require('./routes/index');
 var topics = require('./routes/topic');
 
@@ -41,7 +43,7 @@ app.use(function(req,res,next){
   app.locals.user = req.session.user;
   next();
 })
-
+app.locals.md = md;
 app.use('/', routes);
 app.use('/topic', topics);
 

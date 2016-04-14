@@ -31,4 +31,12 @@ exports.create = function(req,res){
             res.redirect('/');
         }
     });
+
 };
+
+exports.detail = function(req,res){
+    var tid = req.params._id;
+    TopicModel.getTopic(tid,function(err,topic){
+       res.render('detail',{topic:topic});
+    });
+}
